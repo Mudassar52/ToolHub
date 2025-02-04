@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub - Document Conversion Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-file-pdf"></i>
+                ToolHub
+            </a>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li>
+                    <a href="./jpg to png.html" class="nav-link">Img Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./jpg to png.html"><i class="fas fa-file-alt"></i> Jpg to Png</a>
+                        <a href="./png to jpg.html"><i class="fas fa-file-alt"></i> Png to Jpg</a>
+                        <a href="./image to pdf.html"><i class="fas fa-image"></i> Image to PDF</a>
+                        <a href="./pdf to image.html"><i class="fas fa-image"></i> PDF to Image</a>
+                        <a href="./image resizer.html"><i class="fas fa-image"></i> image resizer</a>
+                        <a href="./thumbnail download.html"><i class="fas fa-download"></i> Thumbnail</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Text Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./text to pdf.html"><i class="fas fa-file-pdf"></i> Text to PDF</a>
+                        <a href="./text to doc.html"><i class="fas fa-file-word"></i> Text to DOC</a>
+                        <a href="./doc to text.html"><i class="fas fa-file-alt"></i> DOC to Text</a>
+                        <a href="./code editor.html"><i class="fas fa-code"></i> Code Editor</a>
+                        <a href="./table editor.html"><i class="fas fa-table"></i> Table Editor</a>
+                        <a href="./pdf split.html"><i class="fas fa-file-pdf"></i> PDF Split</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">PDF Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./Merge Pdf.html"><i class="fas fa-file-alt"></i> Merge PDF</a>
+                        <a href="./pdf to text.html"><i class="fas fa-file-alt"></i> PDF to Text</a>
+                        <a href="./Pdf to Doc.html"><i class="fas fa-file-word"></i> PDF to DOC</a>
+                        <a href="./pdf to zip.html"><i class="fas fa-file-pdf"></i> PDF to Zip</a>
+                        <a href="./zip extract.html"><i class="fas fa-file-pdf"></i> Zip Extract </a>
+                        <a href="./excel to pdf.html"><i class="fas fa-file-alt"></i> Excel to PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">DOC Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./doc to pdf.html"><i class="fas fa-file-pdf"></i> DOC to PDF</a>
+                        <a href="./Svg to Pdf.html"><i class="fas fa-file-pdf"></i> SVG to PDF</a>
+                        <a href="./gif to pdf.html"><i class="fas fa-file-pdf"></i> GIF to PDF</a>
+                        <a href="./image compressor.html"><i class="fas fa-image"></i> Image compressor</a>
+                        <a href="./image converter.html"><i class="fas fa-image"></i> Image Converter</a>
+                        <a href="./watermark to pdf.html"><i class="fas fa-file-pdf"></i> WaterMarke to PDF</a>
+                    </div>
+                </li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="floating-shapes">
+        <div class="shape" style="top: 10%; left: 10%; background: #e91e63; width: 20px; height: 20px; border-radius: 5px;"></div>
+        <div class="shape" style="top: 30%; right: 20%; background: #2196F3; width: 30px; height: 30px; border-radius: 50%;"></div>
+        <div class="shape" style="bottom: 20%; left: 30%; background: #ff5722; width: 25px; height: 25px; transform: rotate(45deg);"></div>
+    </div>
+
+    <div class="container">
+        <div class="notification-bar">
+            Want ToolHub Updates? No Spam.
+            <button class="subscribe-btn">Subscribe</button>
+        </div>
+
+        <div class="hero">
+            <h1>Free Tools to Make<br><span class="highlight">Your Life</span> Simple</h1>
+            <p>We offer PDF, video, image and other online tools to make your life easier</p>
+        </div>
+
+
+
+
+
+        <div class="container2">
+    
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                </div>
+                <div class="tools-count">15+ tools</div>
+                <h3 class="title">File Tools</h3>
+                <p class="description">Powerful file management and conversion tools to handle all your document needs.</p>
+                <button class="action-button">
+                    View Tools
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12l6-6M5 6l6 6"/>
+                    </svg>
+                </button>
+            </div>
+    
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <div class="tools-count">45+ tools</div>
+                <h3 class="title">PDF Tools</h3>
+                <p class="description">Complete PDF solution for creating, editing, and managing your PDF documents.</p>
+                <button class="action-button">
+                    Start Now
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12l6-6M5 6l6 6"/>
+                    </svg>
+                </button>
+            </div>
+    
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-wrapper">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                </div>
+                <div class="tools-count">20+ tools</div>
+                <h3 class="title">Design Tools</h3>
+                <p class="description">Creative design tools to bring your visual ideas to life with professional results.</p>
+                <button class="action-button">
+                    Get Started
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12l6-6M5 6l6 6"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    
+
+
+
+        <div class="header">
+            <h1>Our Most Popular Tools</h1>
+            <p>We present the best of the best. All free, no catch</p>
+        </div>
+    
+        <div class="category-tabs">
+            <button class="tab active" data-category="all">All Tools</button>
+            <button class="tab" data-category="pdf">PDF Tools</button>
+            <button class="tab" data-category="image">Image Tools</button>
+            <button class="tab" data-category="ai">Doc Tools</button>
+        </div>
+
+        
+    <div class="tools-grid">
+        <div  class="tool-card" data-category="ai">
+            <div class="tool-icon6 red">
+                <img src="./images/doc.png" alt="content" />
+            </div>
+            <div class="tool-info">
+                <a href="./doc to pdf.html">
+                <div class="tool-name">Doc to PDF</div>
+                <div class="tool-category category-ai">Doc Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+            <div class="tool-icon6 red">
+                <img src="./images/documents.png" alt="content" />
+            </div>
+            <div class="tool-info">
+                <a href="./doc to text.html">
+                <div class="tool-name">Doc to Text</div>
+                <div class="tool-category category-ai">Doc Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+            <div class="tool-icon6 red">
+                <img src="./images/bullet-list.png" alt="content" />
+            </div>
+            <div class="tool-info">
+                <a href="./text to doc.html">
+                <div class="tool-name">Text to Doc</div>
+                <div class="tool-category category-ai">Doc Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+            <div class="tool-icon6 red">
+                <img src="./images/web-design.png" alt="content" />
+            </div>
+            <div class="tool-info">
+                <a href="./code editor.html">
+                <div class="tool-name">Code Editor</div>
+                <div class="tool-category category-ai">Doc Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="image">
+            <div class="tool-icon6 blue">
+                <img src="./images/picture-as-pdf.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./image to pdf.html">
+                <div class="tool-name">Image to PDF</div>
+                <div class="tool-category category-image">Image Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="image">
+            <div class="tool-icon6 blue">
+                <img src="./images/image.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./image resizer.html">
+                <div class="tool-name">Image Resizer</div>
+                <div class="tool-category category-image">Image Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="image">
+            <div class="tool-icon6 blue">
+                <img src="./images/photo.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./image compressor.html">
+                <div class="tool-name">Image Compressor</div>
+                <div class="tool-category category-image">Image Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="pdf">
+            <div class="tool-icon6 yellow">
+                <img src="./images/file.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./Merge Pdf.html">
+                <div class="tool-name">Merge PDF</div>
+                <div class="tool-category category-pdf">PDF Tools</div>
+            </a>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-category="pdf">
+            <div class="tool-icon6 yellow">
+                <img src="./images/pdf.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./pdf to text.html">
+                <div class="tool-name">PDF to Text</div>
+                <div class="tool-category category-pdf">PDF Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="pdf">
+            <div class="tool-icon6 yellow">
+                <img src="./images/list.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./Pdf to Doc.html">
+                <div class="tool-name">PDF to doc</div>
+                <div class="tool-category category-pdf">PDF Tools</div>
+            </a>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-category="pdf">
+            <div class="tool-icon6 yellow">
+                <img src="./images/zip.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./pdf to zip.html">
+                <div class="tool-name">PDF to Zip</div>
+                <div class="tool-category category-pdf">PDF Tools</div>
+            </a>
+            </div>
+        </div>
+
+        <div class="tool-card" data-category="pdf">
+            <div class="tool-icon6 yellow">
+                <img src="./images/picture.png" alt="image" />
+            </div>
+            <div class="tool-info">
+                <a href="./pdf to image.html">
+                <div class="tool-name">PDF to Image</div>
+                <div class="tool-category category-pdf">PDF Tools</div>
+            </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">10m</div>
+                <div class="stat-label">Files Converted</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Online Tools</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1m</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500k</div>
+                <div class="stat-label">PDFs Created</div>
+            </div>
+        </div>
+    </div>
+
+
+  
+    <div class="container3">
+        <div class="header2">
+            <h1>Premium Tools, Zero Cost</h1>
+            <p>Experience enterprise-grade tools without the premium price tag. No sign-up required.</p>
+        </div>
+        
+        <div class="tools-grid1">
+            <div class="tool-card1">
+                <div class="tool-image">
+                    <img src="./images/1.png" alt="AI Image Generator">
+                </div>
+                <h3 class="tool-title">Image Resizer</h3>
+                <p class="tool-description">Transform your creative ideas into stunning visuals using our advanced image Resizer technology. Create unique artwork in seconds.</p>
+                <a href="./image resizer.html" class="learn-more">
+                    Explore Now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="tool-card1">
+                <div class="tool-image">
+                    <img src="./images/2.png" alt="PDF Editor">
+                </div>
+                <h3 class="tool-title">Smart PDF Editor</h3>
+                <p class="tool-description">Edit, annotate, and transform PDFs with our intuitive editor. Powerful features wrapped in a simple interface.</p>
+                <a href="./text to pdf.html" class="learn-more">
+                    Start Editing
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="tool-card1">
+                <div class="tool-image">
+                    <img src="./images/3.png" alt="Code Editor">
+                </div>
+                <h3 class="tool-title">Code Studio</h3>
+                <p class="tool-description">Write, compile, and deploy code in your browser. Supports multiple languages with real-time collaboration.</p>
+                <a href="./code editor.html" class="learn-more">
+                    Code Now
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container0">
+        <div class="header0">
+            <h1>Free Tools You'd Usually Pay For</h1>
+            <p>No Limits, No Sign-Up</p>
+        </div>
+        
+        <div class="tools-grid0">
+            <div class="tool-card0">
+                <div class="tool-image0">
+                    <img src="./images/4.png" alt="Thumbnail Downloader">
+                </div>
+                <h3 class="tool-title0">Thumbnail Downloader</h3>
+                <p class="tool-description0">Youtube video link copy and past and dawnload high quailty thumbnail</p>
+                <a href="./thumbnail download.html" class="learn-more0">
+                    Learn more
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="tool-card0">
+                <div class="tool-image0">
+                    <img src="./images/5.png" alt="PDF Editor">
+                </div>
+                <h3 class="tool-title0">Merge PDF</h3>
+                <p class="tool-description0">Upload and merge the pdf file and download it. No sign-up required</p>
+                <a href="./Merge Pdf.html" class="learn-more0">
+                    Learn more
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <main class="main-content">
+        <!-- Your existing converter content here -->
+    </main>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>mudassar523r@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+92 3287458137</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>24/7 Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzIxOTZmMyIgZD0iTTEyIDJsLTkgNHY2YzAgNS4xIDMuOSA5LjUgOSAxMXM5LTUuOSA5LTExdi02bC05LTR6Ii8+PC9zdmc+" alt="Box20 Logo">
+                        <span class="brand-name">ToolHub</span>
+                    </div>
+                    <p class="brand-description">
+                        ToolHub provides free online conversion, pdf, and other handy tools to help you solve problems of all types. All files both processed and unprocessed are deleted after 1 hour.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Navigate</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link hover-3d"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="./privacy policy.html" class="footer-link hover-3d"><i class="fas fa-lock"></i> Privacy Policy</a></li>
+                        <li><a href="./terms-of-service.html" class="footer-link hover-3d"><i class="fas fa-file-alt"></i> TOS</a></li>
+                        <li><a href="#" class="footer-link hover-3d"><i class="fas fa-envelope"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Popular Tools</h3>
+                    <div class="tool-grid2">
+                        <a href="./table editor.html" class="tool-item hover-3d">
+                            <i class="fas fa-pencil-alt"></i>
+                            Table Editor
+                            <span class="new-badge">New</span>
+                        </a>
+                        <a href="./code editor.html" class="tool-item hover-3d">
+                            <i class="fas fa-code"></i>
+                            Code Editor
+                        </a>
+                        <a href="./thumbnail download.html" class="tool-item hover-3d">
+                            <i class="fas fa-paragraph"></i>
+                            Thumbnail Downloader
+                        </a>
+                        <a href="./image compressor.html" class="tool-item hover-3d">
+                            <i class="fas fa-image"></i>
+                            Image compressor
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>PDF Tools</h3>
+                    <div class="tool-grid2">
+                        <a href="./pdf split.html" class="tool-item hover-3d">
+                            <i class="fas fa-file-pdf"></i>
+                            PDF Split
+                        </a>
+                        <a href="./watermark to pdf.html" class="tool-item hover-3d">
+                            <i class="fas fa-compress"></i>
+                            WaterMarke to PDF
+                        </a>
+                        <a href="Merge Pdf.html" class="tool-item hover-3d">
+                            <i class="fas fa-object-group"></i>
+                            Merge PDF
+                        </a>
+                        <a href="./pdf to image.html" class="tool-item hover-3d">
+                            <i class="fas fa-image"></i>
+                            PDF to Image
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                Made By. Mudassar Latif
+                <br>
+                <p>&copy; 2025 ToolHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./assets/index.js"></script>
+</body>
+</html>

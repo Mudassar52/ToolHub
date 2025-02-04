@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub - Document Conversion Tools</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #00e6b3;
+            --text-color: #333;
+            --bg-color: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(26, 115, 232, 0.1);
+            color: var(--primary-color);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-color);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: 0.3s;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                margin-left: 1rem;
+                margin-top: 0.5rem;
+                display: none;
+            }
+
+            .nav-menu li.active .dropdown {
+                display: block;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                width: 100%;
+            }
+        }
+
+
+        body{
+            padding-top: 7rem;
+        }
+   
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg);
+            transition: transform 0.5s ease;
+        }
+        .container:hover {
+            transform: rotateX(0);
+        }
+        .header {
+            background: #4a4a4a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .terms-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .terms-category {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .terms-category h2 {
+            color:#6a11cb ;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .terms-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            text-align: center;
+            position: relative;
+        }
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #5a1b8b;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-file-pdf"></i>
+                ToolHub
+            </a>
+            <button class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="./index.html" class="nav-link">Home</a></li>
+                <li>
+                    <a href="#" class="nav-link">Img Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./jpg to png.html"><i class="fas fa-file-alt"></i> Jpg to Png</a>
+                        <a href="./png to jpg.html"><i class="fas fa-file-alt"></i> Png to Jpg</a>
+                        <a href="./image to pdf.html"><i class="fas fa-image"></i> Image to PDF</a>
+                        <a href="./pdf to image.html"><i class="fas fa-image"></i> PDF to Image</a>
+                        <a href="./image resizer.html"><i class="fas fa-image"></i> image resizer</a>
+                        <a href="./thumbnail download.html"><i class="fas fa-download"></i> Thumbnail</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Text Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./text to pdf.html"><i class="fas fa-file-pdf"></i> Text to PDF</a>
+                        <a href="./text to doc.html"><i class="fas fa-file-word"></i> Text to DOC</a>
+                        <a href="./doc to text.html"><i class="fas fa-file-alt"></i> DOC to Text</a>
+                        <a href="./code editor.html"><i class="fas fa-code"></i> Code Editor</a>
+                        <a href="./table editor.html"><i class="fas fa-table"></i> Table Editor</a>
+                        <a href="./pdf split.html"><i class="fas fa-file-pdf"></i> PDF Split</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">PDF Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./Merge Pdf.html"><i class="fas fa-file-alt"></i> Merge PDF</a>
+                        <a href="./pdf to text.html"><i class="fas fa-file-alt"></i> PDF to Text</a>
+                        <a href="./Pdf to Doc.html"><i class="fas fa-file-word"></i> PDF to DOC</a>
+                        <a href="./pdf to zip.html"><i class="fas fa-file-pdf"></i> PDF to Zip</a>
+                        <a href="./zip extract.html"><i class="fas fa-file-pdf"></i> Zip Extract </a>
+                        <a href="./excel to pdf.html"><i class="fas fa-file-alt"></i> Excel to PDF</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">DOC Tools <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="./doc to pdf.html"><i class="fas fa-file-pdf"></i> DOC to PDF</a>
+                        <a href="./Svg to Pdf.html"><i class="fas fa-file-pdf"></i> SVG to PDF</a>
+                        <a href="./gif to pdf.html"><i class="fas fa-file-pdf"></i> GIF to PDF</a>
+                        <a href="./image compressor.html"><i class="fas fa-image"></i> Image compressor</a>
+                        <a href="./image converter.html"><i class="fas fa-image"></i> Image Converter</a>
+                        <a href="./watermark to pdf.html"><i class="fas fa-file-pdf"></i> WaterMarke to PDF</a>
+                    </div>
+                </li>
+                <li><a href="./index.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="header">
+            <h1>ToolHub Terms of Service</h1>
+            <p>Last Updated: January 2024</p>
+        </div>
+        
+        <div class="terms-section">
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    User Agreement 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>By accessing ToolHub, users agree to the following terms:</p>
+                    <ul>
+                        <li>Compliance with all platform rules and regulations</li>
+                        <li>Maintaining account security and confidentiality</li>
+                        <li>Providing accurate and up-to-date information</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    Privacy Policy 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>ToolHub is committed to protecting user privacy:</p>
+                    <ul>
+                        <li>Data collection limited to necessary information</li>
+                        <li>Encryption of personal and sensitive data</li>
+                        <li>No selling of user information to third parties</li>
+                        <li>Transparent data usage policies</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    Intellectual Property 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>All content on ToolHub is protected by intellectual property laws:</p>
+                    <ul>
+                        <li>Users retain ownership of their original content</li>
+                        <li>Platform reserves rights to remove infringing content</li>
+                        <li>Prohibited reproduction without explicit permission</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    User Conduct 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>Users are expected to maintain professional and respectful behavior:</p>
+                    <ul>
+                        <li>No harassment or discriminatory content</li>
+                        <li>Prohibition of illegal activities</li>
+                        <li>Respect for other users' rights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    Payment and Subscriptions 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>Billing and subscription terms:</p>
+                    <ul>
+                        <li>Transparent pricing structure</li>
+                        <li>Recurring billing details</li>
+                        <li>Refund and cancellation policies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="terms-category">
+                <h2 onclick="toggleContent(this)">
+                    Limitation of Liability 
+                    <i class="fas fa-chevron-down"></i>
+                </h2>
+                <div class="terms-content">
+                    <p>ToolHub's legal protections and user responsibilities:</p>
+                    <ul>
+                        <li>No guarantee of uninterrupted service</li>
+                        <li>Limited liability for damages</li>
+                        <li>User assumes risks of platform usage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="terms-section">
+            <button onclick="openAcceptPopup()" class="btn">
+                Accept Terms
+            </button>
+        </div>
+    </div>
+
+    <div id="acceptPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <h2>Accept Terms of Service</h2>
+            <p>Please carefully read and accept our comprehensive Terms of Service.</p>
+            <button onclick="acceptTerms()" class="btn">I Accept</button>
+            <button onclick="closePopup()" class="btn" style="background-color: #d9534f;">I Decline</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.querySelector('i').classList.toggle('fa-bars');
+                hamburger.querySelector('i').classList.toggle('fa-times');
+            });
+
+            // Handle dropdown toggles on mobile
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768 && link.nextElementSibling?.classList.contains('dropdown')) {
+                        e.preventDefault();
+                        link.parentElement.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.remove('fa-times');
+                    hamburger.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+
+
+
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+            } else {
+                content.style.display = 'block';
+                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+            }
+        }
+
+        function openAcceptPopup() {
+            document.getElementById('acceptPopup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('acceptPopup').style.display = 'none';
+        }
+
+        function acceptTerms() {
+            alert('Terms Accepted! Welcome to ToolHub.');
+            closePopup();
+        }
+
+    </script>
+</body>
+</html>
